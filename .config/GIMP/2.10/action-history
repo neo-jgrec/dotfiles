@@ -1,0 +1,16 @@
+# GIMP action-history
+
+(history-item "select-none" 1)
+(history-item "edit-clear" 1)
+(history-item "image-scale" 0)
+(history-item "file-export-as" 0)
+(history-item "file-overwrite" 0)
+(history-item "file-quit" 1)
+(history-item "tools-foreground-select" 0)
+(history-item "tools-iscissors" 1)
+(history-item "image-resize" 0)
+(history-item "view-close" 0)
+(history-item "tools-free-select" 0)
+(history-item "layers-alpha-add" 1)
+
+# end of action-history
