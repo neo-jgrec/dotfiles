@@ -1,0 +1,14 @@
+swipe:
+  3:
+    left:
+      sendkey: 'LEFTMETA+LEFTSHIFT+RIGHT'
+    right:
+      sendkey: 'LEFTMETA+LEFTSHIFT+LEFT'
+
+threshold:
+  swipe: 0.4
+  pinch: 0.4
+
+interval:
+  swipe: 0.8
+  pinch: 0.1
