@@ -78,6 +78,7 @@ keys = [
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "space", lazy.spawn("rofi -show drun -font \"hack 10\" -icon-theme \"Papirus\" -show-icons"), desc="Spawn rofi"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -94,39 +95,20 @@ for vt in range(1, 8):
     )
 
 
-groups = [Group(i) for i in "123456789"]
+groups = [Group(i) for i in "αβγδεζηθι"]
 
-for i in groups:
+for i, group in enumerate(groups):
+    actual_key = str(i + 1)
     keys.extend(
         [
             # mod1 + group number = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
+            Key([mod], actual_key, lazy.group[group.name].toscreen(), desc="Switch to group {}".format(group.name)),
             # mod1 + shift + group number = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
+            Key([mod, "shift"], actual_key, lazy.window.togroup(group.name, switch_group=True), desc="Switch to & move focused window to group {}".format(group.name)),
             # mod1 + shift + right = move to next group
-            Key(
-                [mod, "shift"],
-                "Right",
-                lazy.screen.next_group(),
-                desc="Move to next group",
-            ),
+            Key([mod, "shift"], "Right", lazy.screen.next_group(), desc="Move to next group"),
             # mod1 + shift + left = move to previous group
-            Key(
-                [mod, "shift"],
-                "Left",
-                lazy.screen.prev_group(),
-                desc="Move to previous group",
-            ),
+            Key([mod, "shift"], "Left", lazy.screen.prev_group(), desc="Move to previous group"),
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + group number = move focused window to group
             # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
